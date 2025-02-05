@@ -93,7 +93,7 @@ public partial class App : Application
     {
         views.Register(
             new ViewMap(ViewModel: typeof(ShellViewModel)),
-            new ViewMap<MainPage, MainViewModel>(),
+            new ViewMap<Presentation.MainPage, MainViewModel>(),
             new DataViewMap<SecondPage, SecondViewModel, Entity>()
         );
 
