@@ -14,23 +14,25 @@
         x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Image
+        <Canvas
+            Background="Black"
             Grid.Column="0"
             Grid.Row="0"
-            Height="100"
-            Source="Assets/Images/nave2.png"
-            Width="100"
-            x:Name="nave2" />
+            x:Name="MainCanvas">
+            <Image
+                Canvas.Left="0"
+                Canvas.Top="0"
+                Height="100"
+                Source="Assets/Images/nave2.png"
+                Width="100"
+                x:Name="nave2" />
+
+        </Canvas>
     </Grid>
 
 </Page>

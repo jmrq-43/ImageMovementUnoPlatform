@@ -9,6 +9,7 @@ public sealed partial class MainPage : Page
 {
     private IWavePlayer waveOutDevice;
     private AudioFileReader audioFileReader;
+    private const double MoveStep = 10;
     
     public MainPage()
     {
@@ -33,21 +34,27 @@ public sealed partial class MainPage : Page
 
     private void MainPage_KeyDown(object sender, KeyRoutedEventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("Tecla presionada: " + e.Key);  
+        System.Diagnostics.Debug.WriteLine("Tecla presionada: " + e.Key);
 
-        int currentRow = Grid.GetRow(nave2);
-
+        double currentTop = Canvas.GetTop(nave2);
+        double newTop = currentTop;
+        
         switch (e.Key)
         {
             case VirtualKey.Up:
-                if (currentRow > 0) Grid.SetRow(nave2, currentRow - 1);
+                newTop -= MoveStep;
                 PlaySound();
                 break;
             case VirtualKey.Down:
-                if (currentRow < MainGrid.RowDefinitions.Count - 1) Grid.SetRow(nave2, currentRow + 1);
+                newTop += MoveStep;
                 PlaySound();
                 break;
         }
+
+        if (newTop < 0 ) newTop = 0;
+        if (newTop > MainCanvas.ActualHeight - nave2.ActualHeight)
+            newTop = MainCanvas.ActualHeight - nave2.ActualHeight;
+        Canvas.SetTop(nave2, newTop);
     }
 
     public void PlaySound()
